@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Dashain, Astha ❤️</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg, #fff4e4, #ffe0c2, #fff8ec);
+  color: #8b3028;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.card {
+  width: min(90%, 430px);
+  padding: 38px 24px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.72);
+  box-shadow: 0 12px 45px rgba(130,65,30,0.13);
+  animation: appear 1.2s ease both;
+  position: relative;
+  z-index: 2;
+}
+
+.flower {
+  font-size: 62px;
+  animation: sway 3s ease-in-out infinite;
+}
+
+h1 {
+  font-size: clamp(30px, 8vw, 42px);
+  margin: 18px 0 12px;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+button {
+  border: 0;
+  border-radius: 30px;
+  padding: 14px 25px;
+  margin-top: 14px;
+  background: #a83228;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px #a8322833;
+  transition: transform .2s, background .2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: #85251f;
+}
+
+#message {
+  display: none;
+  animation: appear .9s ease both;
+}
+
+.sparkle {
+  position: fixed;
+  bottom: -30px;
+  pointer-events: none;
+  animation: floatUp linear forwards;
+  z-index: 1;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-7deg) scale(1); }
+  50% { transform: rotate(7deg) scale(1.08); }
+}
+
+@keyframes floatUp {
+  to { transform: translateY(-115vh) rotate(260deg); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="flower">🌼</div>
+  <p>✨ A little surprise for someone special ✨</p>
+  <h1>Happy Dashain, Astha ❤️</h1>
+  <p>May this Dashain bring you happiness, peace, and countless reasons to smile.</p>
+
+  <button id="revealButton" onclick="revealMessage()">
+    Open Your Surprise 💌
+  </button>
+
+  <div id="message">
+    <p>
+      🌸 Dear Astha 🌸<br>
+      May your days shine as brightly as the Dashain lights,
+      and may your heart always be filled with joy.
+    </p>
+    <p>Wishing you a beautiful Dashain, full of love and sweet memories. ❤️</p>
+    <p>🌺 With warm wishes 🌺</p>
+  </div>
+</div>
+
+<script>
+function revealMessage() {
+  document.getElementById("message").style.display = "block";
+  document.getElementById("revealButton").style.display = "none";
+
+  for (let i = 0; i < 24; i++) {
+    setTimeout(() => {
+      const flower = document.createElement("span");
+      flower.className = "sparkle";
+      flower.textContent = ["✨", "❤️", "🌼", "🌸"][Math.floor(Math.random() * 4)];
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.fontSize = (14 + Math.random() * 18) + "px";
+      flower.style.animationDuration = (3 + Math.random() * 4) + "s";
+      document.body.appendChild(flower);
+      flower.addEventListener("animationend", () => flower.remove());
+    }, i * 100);
+  }
+}
+
+setInterval(() => {
+  const star = document.createElement("span");
+  star.className = "sparkle";
+  star.textContent = Math.random() > 0.5 ? "✨" : "🌼";
+  star.style.left = Math.random() * 100 + "vw";
+  star.style.fontSize = "16px";
+  star.style.animationDuration = (5 + Math.random() * 4) + "s";
+  document.body.appendChild(star);
+  star.addEventListener("animationend", () => star.remove());
+}, 650);
+</script>
+
+</body>
+</html>
